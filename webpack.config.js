@@ -6,7 +6,7 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 module.exports = {
   mode: "development",
   entry: {
-    bundle: path.resolve(__dirname, "src/index.ts"),
+    bundle: path.resolve(__dirname, "src/index.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -27,18 +27,20 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts?$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
+        test: /\.js$/,
+        exclude: /node_modlues/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
       },
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
-  },
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
   },
   optimization: {
     minimizer: [new CssMinimizerPlugin()],
