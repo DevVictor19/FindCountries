@@ -16,9 +16,24 @@
     <header class="main-header">
       <h1 class="main-header__title">Where in the world?</h1>
       <button id="darkModeBtn" class="main-header__button">
-        <img src="./public/dark-off.svg" alt="dark mode off icon" />
+        <img src="public/dark-off.svg" alt="dark mode off icon" />
         Dark Mode
       </button>
     </header>
+    <main id="display">
+      <div id="content">
+        <div class="content-search">
+          <div class="content-search__input-container">
+            <label for="searchInput" hidden>Search for a country…</label>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search for a country…"
+            />
+            <img src="public/find-icon.svg" alt="find icon" />
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
