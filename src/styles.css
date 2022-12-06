@@ -59,13 +59,13 @@ body {
   padding: 48px 80px;
 }
 
-.content-search__input-container {
+.content-search__form-container {
   position: relative;
   max-width: 480px;
   width: 100%;
 }
 
-.content-search__input-container input {
+.content-search__form-container input {
   all: unset;
   width: 100%;
   background-color: var(--el-color);
@@ -82,11 +82,11 @@ body {
   color: var(--tx-color);
 }
 
-.content-search__input-container input::placeholder {
+.content-search__form-container input::placeholder {
   color: var(--tx-color-ligther);
 }
 
-.content-search__input-container img {
+.content-search__form-container img {
   position: absolute;
   top: 0;
   bottom: 0;
