@@ -55,17 +55,20 @@ body {
   min-height: calc(100vh - 80px);
 }
 
-.search-container {
+.actions {
   padding: 48px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.search-container__form {
+.actions__form {
   position: relative;
   max-width: 480px;
   width: 100%;
 }
 
-.search-container__form input {
+.actions__form input {
   all: unset;
   width: 100%;
   background-color: var(--el-color);
@@ -82,11 +85,11 @@ body {
   color: var(--tx-color);
 }
 
-.search-container__form input::placeholder {
+.actions__form input::placeholder {
   color: var(--tx-color-ligther);
 }
 
-.search-container__form img {
+.actions__form img {
   position: absolute;
   top: 0;
   bottom: 0;
