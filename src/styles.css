@@ -55,17 +55,17 @@ body {
   min-height: calc(100vh - 80px);
 }
 
-.content-search {
+.search-container {
   padding: 48px 80px;
 }
 
-.content-search__form-container {
+.search-container__form {
   position: relative;
   max-width: 480px;
   width: 100%;
 }
 
-.content-search__form-container input {
+.search-container__form input {
   all: unset;
   width: 100%;
   background-color: var(--el-color);
@@ -82,11 +82,11 @@ body {
   color: var(--tx-color);
 }
 
-.content-search__form-container input::placeholder {
+.search-container__form input::placeholder {
   color: var(--tx-color-ligther);
 }
 
-.content-search__form-container img {
+.search-container__form img {
   position: absolute;
   top: 0;
   bottom: 0;
