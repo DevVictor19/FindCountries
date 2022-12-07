@@ -21,6 +21,7 @@ module.exports = {
     },
     port: 3000,
     open: true,
+    watchFiles: ["./src/index.html"],
     hot: true,
     compress: true,
     historyApiFallback: true,
@@ -40,6 +41,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
       },
     ],
   },
