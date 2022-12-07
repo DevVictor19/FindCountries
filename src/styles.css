@@ -159,6 +159,7 @@ body {
 }
 
 .actions__dropdown-options-item {
+  position: relative;
   padding: 8px 24px;
   font-style: normal;
   font-weight: 400;
@@ -173,4 +174,9 @@ body {
 
 .actions__dropdown-options-item:last-child {
   margin-bottom: 8px;
+}
+
+.--options-item-active {
+  font-weight: bold;
+  color: red;
 }
