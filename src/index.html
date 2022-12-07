@@ -20,18 +20,34 @@
         Dark Mode
       </button>
     </header>
-    <main id="display">
-      <div id="content">
-        <div class="content-search">
-          <form autocomplete="off" class="content-search__form-container">
-            <label for="searchInput" hidden>Search for a country…</label>
-            <input
-              type="text"
-              id="searchInput"
-              placeholder="Search for a country…"
-            />
-            <img src="public/find-icon.svg" alt="find icon" />
-          </form>
+    <main id="content">
+      <div class="actions">
+        <form autocomplete="off" class="actions__form">
+          <label for="searchInput" hidden>Search for a country…</label>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for a country…"
+          />
+          <img src="public/find-icon.svg" alt="find icon" />
+        </form>
+
+        <div class="actions__dropdown-container">
+          <button
+            type="button"
+            id="dropdownButton"
+            class="actions__dropdown-button"
+          >
+            Filter by Regions
+            <img src="public/arrow.svg" alt="arrow icon" id="dropdownImg" />
+          </button>
+          <ul id="dropdownOptions" class="actions__dropdown-options-list">
+            <li class="actions__dropdown-options-item">Africa</li>
+            <li class="actions__dropdown-options-item">America</li>
+            <li class="actions__dropdown-options-item">Asia</li>
+            <li class="actions__dropdown-options-item">Europe</li>
+            <li class="actions__dropdown-options-item">Oceania</li>
+          </ul>
         </div>
       </div>
     </main>
