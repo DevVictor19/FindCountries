@@ -1,6 +1,8 @@
 import "./styles.css";
+
 import { toggleDropdownAnimation } from "./js/dropdown";
 import { setActiveOptionStyleClass } from "./js/setActiveOptionStyleClass";
+import { setIcons, setTheme, swapTheme } from "./js/darkMode";
 
 const dropdownButton = document.getElementById("dropdownButton");
 dropdownButton.addEventListener("click", toggleDropdownAnimation);
@@ -15,6 +17,11 @@ dropdownOptions.forEach((item) => {
   });
 });
 
+const darkModeBtn = document.getElementById("darkModeBtn");
+darkModeBtn.addEventListener("click", swapTheme);
+
 window.addEventListener("load", () => {
   setActiveOptionStyleClass(dropdownOptions[0], "--options-item-active");
+  setTheme();
+  setIcons();
 });
