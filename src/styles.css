@@ -182,7 +182,7 @@ body {
   grid-template-rows: auto;
   justify-content: center;
   gap: 75px;
-  padding: 0 80px;
+  padding: 0 80px 45px;
 }
 
 .flags-container__card {
