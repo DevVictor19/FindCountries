@@ -46,7 +46,7 @@ export function setIcons() {
   const darkModeIcon =
     currentThemeName === themeNames.light ? darkModeOffIcon : darkModeOnIcon;
 
-  document.getElementById("arrowIcon").src = arrowIcon;
+  document.getElementById("dropdownArrowIcon").src = arrowIcon;
   document.getElementById("darkModeIcon").src = darkModeIcon;
 }
 
