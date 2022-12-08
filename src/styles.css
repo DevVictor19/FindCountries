@@ -70,6 +70,7 @@ body {
 
 .actions__form input {
   all: unset;
+  box-sizing: border-box;
   width: 100%;
   background-color: var(--el-color);
   box-shadow: 0px 2px 9px var(--sh-color);
@@ -100,6 +101,8 @@ body {
 .actions__dropdown-container {
   position: relative;
   color: var(--tx-color);
+  max-width: 200px;
+  width: 100%;
 }
 
 .actions__dropdown-button {
@@ -108,7 +111,7 @@ body {
   border-radius: 5px;
   background-color: var(--el-color);
   box-shadow: 0px 2px 9px 0px var(--sh-color);
-  padding: 0 24px;
+  width: 100%;
   cursor: pointer;
 
   font-style: normal;
@@ -160,7 +163,7 @@ body {
 
 .actions__dropdown-options-item {
   position: relative;
-  padding: 8px 24px;
+  padding: 4px 24px;
   font-style: normal;
   font-weight: 400;
   font-size: 0.875rem;
