@@ -11,6 +11,10 @@ const dropdownOptions = document.querySelectorAll(
 
 dropdownOptions.forEach((item) => {
   item.addEventListener("click", (event) => {
-    setActiveOptionStyleClass(event, "--options-item-active");
+    setActiveOptionStyleClass(event.target, "--options-item-active");
   });
+});
+
+window.addEventListener("load", () => {
+  setActiveOptionStyleClass(dropdownOptions[0], "--options-item-active");
 });
