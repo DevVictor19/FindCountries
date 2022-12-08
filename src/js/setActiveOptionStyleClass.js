@@ -1,10 +1,10 @@
 let lastActiveOptionElement = null;
 
-export function setActiveOptionStyleClass(event, activeClass) {
+export function setActiveOptionStyleClass(element, activeClass) {
   if (lastActiveOptionElement) {
     lastActiveOptionElement.classList.remove(activeClass);
   }
 
-  lastActiveOptionElement = event.target;
-  event.target.classList.add(activeClass);
+  lastActiveOptionElement = element;
+  element.classList.add(activeClass);
 }
