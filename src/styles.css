@@ -193,6 +193,7 @@ body {
   box-shadow: 0px 0px 7px 2px var(--sh-color);
   background-color: var(--el-color);
   cursor: pointer;
+  min-height: 336px;
 }
 
 .flags-container__card-info {
