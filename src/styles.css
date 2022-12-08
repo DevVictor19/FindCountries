@@ -181,7 +181,7 @@ body {
   grid-template-columns: repeat(auto-fill, 264px);
   grid-template-rows: auto;
   justify-content: center;
-  gap: 75px;
+  gap: 74px;
   padding: 0 80px 45px;
 }
 
