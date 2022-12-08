@@ -202,7 +202,7 @@ body {
 .flags-container__card-title {
   font-style: normal;
   font-weight: 800;
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 26px;
   color: var(--tx-color);
   margin-bottom: 16px;
@@ -216,7 +216,7 @@ body {
 
   font-style: normal;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 16px;
   color: var(--tx-color);
 }
