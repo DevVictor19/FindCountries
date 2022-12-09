@@ -1,6 +1,6 @@
 export function parseCountrySchema(data) {
   return {
-    name: data.name.official,
+    name: data.name.common,
     region: data.region,
     population: data.population,
     subregion: data.subregion,
