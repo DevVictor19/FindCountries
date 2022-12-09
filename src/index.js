@@ -9,11 +9,7 @@ import { parseCountrySchema } from "./js/utils/parseCountrySchema";
 
 // elements and classes
 const dropdownButton = document.getElementById("dropdownButton");
-
-const dropdownOptions = document.querySelectorAll(
-  ".actions__dropdown-options-item"
-);
-
+const dropdownOptions = document.getElementById("dropdownOptions");
 const darkModeBtn = document.getElementById("darkModeBtn");
 
 const countryUI = new CountryUI(document.getElementById("flagsContainer"));
@@ -23,33 +19,31 @@ const api = new Api("https://restcountries.com/v3.1/");
 dropdownButton.addEventListener("click", toggleDropdownAnimation);
 darkModeBtn.addEventListener("click", swapTheme);
 
-dropdownOptions.forEach((item) => {
-  item.addEventListener("click", (event) => {
-    setActiveOptionStyleClass(event.target, "--options-item-active");
-    toggleDropdownAnimation();
-    countryUI.resetDisplay();
+dropdownOptions.addEventListener("click", (event) => {
+  const target = event.target;
 
-    const selectedOptionValue = event.target.innerText;
+  if (target === dropdownOptions) return;
 
-    if (selectedOptionValue === "All") {
-      api.get("all").then((data) => {
-        data.forEach((item) => {
-          countryUI.appendOnDisplay(parseCountrySchema(item));
-        });
-      });
-      return;
-    }
+  countryUI.resetDisplay();
+  toggleDropdownAnimation();
 
-    api.get("region/" + selectedOptionValue).then((data) => {
+  if (target.innerText === "All") {
+    api.get("all").then((data) => {
       data.forEach((item) => {
         countryUI.appendOnDisplay(parseCountrySchema(item));
       });
+    });
+    return;
+  }
+
+  api.get("region/" + target.innerText).then((data) => {
+    data.forEach((item) => {
+      countryUI.appendOnDisplay(parseCountrySchema(item));
     });
   });
 });
 
 window.addEventListener("load", () => {
-  setActiveOptionStyleClass(dropdownOptions[0], "--options-item-active");
   setTheme();
   setIcons();
   api.get("all").then((data) => {
