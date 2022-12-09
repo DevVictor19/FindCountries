@@ -21,6 +21,7 @@ const api = new Api("https://restcountries.com/v3.1/");
 
 // events
 dropdownButton.addEventListener("click", toggleDropdownAnimation);
+darkModeBtn.addEventListener("click", swapTheme);
 
 dropdownOptions.forEach((item) => {
   item.addEventListener("click", (event) => {
@@ -46,8 +47,6 @@ dropdownOptions.forEach((item) => {
     });
   });
 });
-
-darkModeBtn.addEventListener("click", swapTheme);
 
 window.addEventListener("load", () => {
   setActiveOptionStyleClass(dropdownOptions[0], "--options-item-active");
