@@ -1,5 +1,4 @@
 export class CountryUI {
-  #storage = [];
   #displayTarget;
 
   constructor(displayTarget) {
@@ -7,10 +6,8 @@ export class CountryUI {
   }
 
   appendOnDisplay(country) {
-    this.#storage.push(country);
-
     const childNode = `
-      <article id="flag-${this.#storage.length}" class="flags-container__card">
+      <article id="${country.name}" class="flags-container__card">
         <img
           width="264"
           height="160"
@@ -29,5 +26,9 @@ export class CountryUI {
     `;
 
     this.#displayTarget.innerHTML += childNode;
+  }
+
+  resetDisplay() {
+    this.#displayTarget.innerHTML = "";
   }
 }
