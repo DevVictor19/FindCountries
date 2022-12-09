@@ -51,6 +51,7 @@ body {
   padding: 48px 80px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -224,4 +225,72 @@ body {
 
 .flags-container__card-list span {
   font-weight: 600;
+}
+
+@media screen and (max-width: 960px) {
+  .main-header {
+    padding: 0 48px;
+  }
+
+  .actions {
+    padding: 48px;
+  }
+
+  .actions__form {
+    margin-right: 80px;
+  }
+
+  .flags-container {
+    padding: 0 48px 45px;
+  }
+}
+
+@media screen and (max-width: 855px) {
+  .actions__form {
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .actions__form {
+    margin-right: 0;
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .main-header {
+    padding: 0 16px;
+  }
+
+  .main-header__title {
+    font-size: 0.875rem;
+    line-height: 20px;
+  }
+
+  .main-header__button {
+    font-size: 0.75rem;
+    line-height: 16px;
+  }
+  .actions {
+    padding: 24px 16px 32px;
+  }
+
+  .actions__form input::placeholder {
+    font-size: 0.75rem;
+  }
+
+  .actions__dropdown-button {
+    font-size: 0.75rem;
+    line-height: 20px;
+  }
+
+  .actions__dropdown-options-item {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .flags-container {
+    padding: 0 16px 45px;
+  }
 }
