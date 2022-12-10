@@ -136,11 +136,14 @@ body {
   color: var(--tx-color-ligther);
 }
 
-.actions__form img {
+.actions__form button {
+  all: unset;
+  cursor: pointer;
   position: absolute;
   top: 0;
   bottom: 0;
   margin: auto 0;
+  height: 18px;
   left: 32px;
 }
 
