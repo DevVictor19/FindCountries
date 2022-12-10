@@ -59,8 +59,8 @@ dropdownOptions.addEventListener("click", (event) => {
   api.get("region/" + target.innerText).then(populateDisplay);
 });
 
-searchInput.addEventListener("input", ({ target }) => {
-  debounceGet(target.value);
+searchInput.addEventListener("input", (event) => {
+  debounceGet(event.target.value);
 });
 
 searchForm.addEventListener("submit", (event) => {
