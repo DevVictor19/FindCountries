@@ -5,7 +5,7 @@ import { setIcons, setTheme, swapTheme } from "./js/darkMode";
 import { CountryUI } from "./js/classes/CountryUI";
 import { Api } from "./js/classes/Api";
 import { parseCountrySchema } from "./js/utils/parseCountrySchema";
-import { debounce } from "./js/utils/debounceFn";
+import { toggleSpinner } from "./js/spinner";
 
 // elements
 const dropdownButton = document.getElementById("dropdownButton");
@@ -25,20 +25,6 @@ function populateDisplay(data) {
   });
 }
 
-const debounceGet = debounce(async (input) => {
-  let result = input === "" ? api.get("all") : api.get("name/" + input);
-
-  const data = await result;
-
-  if (data.length === 0) {
-    alert("Oops... we didn't find any results");
-    return;
-  }
-
-  countryUI.resetDisplay();
-  populateDisplay(data);
-}, 1000);
-
 // events
 dropdownButton.addEventListener("click", toggleDropdownAnimation);
 darkModeBtn.addEventListener("click", swapTheme);
@@ -50,27 +36,56 @@ dropdownOptions.addEventListener("click", (event) => {
 
   countryUI.resetDisplay();
   toggleDropdownAnimation();
+  toggleSpinner();
 
   if (target.innerText === "All") {
-    api.get("all").then(populateDisplay);
+    api
+      .get("all")
+      .then(populateDisplay)
+      .then(() => toggleSpinner());
     return;
   }
 
-  api.get("region/" + target.innerText).then(populateDisplay);
-});
-
-searchInput.addEventListener("input", (event) => {
-  debounceGet(event.target.value);
+  api
+    .get("region/" + target.innerText)
+    .then(populateDisplay)
+    .then(() => toggleSpinner());
 });
 
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  debounceGet(searchInput.value);
+  const inputValue = searchInput.value.trim().replace(/[^A-Za-z ]/g, "");
+
+  if (inputValue === "") {
+    alert(
+      "Please enter a valid country name. (do not leave the field empty either)"
+    );
+    return;
+  }
+
+  searchInput.value = "";
+  toggleSpinner();
+  api
+    .get("name/" + inputValue)
+    .then((data) => {
+      if (data.length === 0) {
+        alert("Oops... we didn't find any results");
+        return;
+      }
+
+      countryUI.resetDisplay();
+      populateDisplay(data);
+    })
+    .then(() => toggleSpinner());
 });
 
 window.addEventListener("load", () => {
   setTheme();
   setIcons();
 
-  api.get("all").then(populateDisplay);
+  toggleSpinner();
+  api
+    .get("all")
+    .then(populateDisplay)
+    .then(() => toggleSpinner());
 });
