@@ -1,6 +1,5 @@
 export class CountryUI {
   #displayTarget;
-  #storage = [];
 
   constructor(displayTarget) {
     this.#displayTarget = displayTarget;
@@ -14,6 +13,7 @@ export class CountryUI {
           height="160"
           src="${country.flagUrl}"
           alt="${country.name}"
+          loading="lazy"
         />
         <div class="flags-container__card-info">
           <h1 class="flags-container__card-title">${country.name}</h1>
@@ -27,27 +27,6 @@ export class CountryUI {
     `;
 
     this.#displayTarget.innerHTML += childNode;
-  }
-
-  filterCountriesByName(input) {
-    if (input === "") {
-      return this.#storage;
-    }
-    const regexp = new RegExp(`${input}`, "gi");
-
-    return this.#storage.filter((country) => regexp.test(country.name));
-  }
-
-  filterCountriesByRegion(region) {
-    if (region === "All") {
-      return this.#storage;
-    }
-
-    return this.#storage.filter((country) => country.region === region);
-  }
-
-  saveOnStorage(country) {
-    this.#storage.push(country);
   }
 
   resetDisplay() {
