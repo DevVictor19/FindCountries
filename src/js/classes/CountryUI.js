@@ -13,6 +13,7 @@ export class CountryUI {
           height="160"
           src="${country.flagUrl}"
           alt="${country.name}"
+          loading="lazy"
         />
         <div class="flags-container__card-info">
           <h1 class="flags-container__card-title">${country.name}</h1>
