@@ -21,20 +21,22 @@ const api = new Api("https://restcountries.com/v3.1/");
 // functions
 function populateDisplay(data) {
   data.forEach((item) => {
-    countryUI.appendOnDisplay(item);
+    countryUI.appendOnDisplay(parseCountrySchema(item));
   });
 }
 
-const debouncedSearchByName = debounce((input) => {
-  const result = countryUI.filterCountriesByName(input);
+const debounceGet = debounce(async (input) => {
+  let result = input === "" ? api.get("all") : api.get("name/" + input);
 
-  if (result.length === 0) {
+  const data = await result;
+
+  if (data.length === 0) {
     alert("Oops... we didn't find any results");
     return;
   }
 
   countryUI.resetDisplay();
-  populateDisplay(result);
+  populateDisplay(data);
 }, 1000);
 
 // events
@@ -47,28 +49,28 @@ dropdownOptions.addEventListener("click", (event) => {
   if (target === dropdownOptions) return;
 
   countryUI.resetDisplay();
-  populateDisplay(countryUI.filterCountriesByRegion(event.target.innerText));
   toggleDropdownAnimation();
+
+  if (target.innerText === "All") {
+    api.get("all").then(populateDisplay);
+    return;
+  }
+
+  api.get("region/" + target.innerText).then(populateDisplay);
 });
 
-searchInput.addEventListener("input", (event) => {
-  debouncedSearchByName(event.target.value);
+searchInput.addEventListener("input", ({ target }) => {
+  debounceGet(target.value);
 });
 
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  debouncedSearchByName(searchInput.value);
+  debounceGet(searchInput.value);
 });
 
 window.addEventListener("load", () => {
   setTheme();
   setIcons();
 
-  api.get("all").then((data) => {
-    data.forEach((country) => {
-      const newCountry = parseCountrySchema(country);
-      countryUI.appendOnDisplay(newCountry);
-      countryUI.saveOnStorage(newCountry);
-    });
-  });
+  api.get("all").then(populateDisplay);
 });
