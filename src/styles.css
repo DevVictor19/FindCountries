@@ -529,6 +529,8 @@ body {
     line-height: 20px;
     width: 120px;
     height: 32px;
+    gap: 8px;
+    border-radius: 2px;
   }
 
   .country-details__info-title {
