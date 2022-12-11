@@ -1,3 +1,5 @@
+import { numberWithCommas } from "./utils/numberWithCommas";
+
 const contentEl = document.getElementById("content");
 
 function createCountryDetailsEl(country) {
@@ -42,7 +44,7 @@ function createCountryDetailsEl(country) {
               <span>Native Name: </span>${nativeName}
             </li>
             <li class="country-details__info-item">
-              <span>Population: </span>${country.population} 
+              <span>Population: </span>${numberWithCommas(country.population)} 
             </li>
             <li class="country-details__info-item">
               <span>Region: </span>${country.region}
