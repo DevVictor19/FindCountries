@@ -11,7 +11,8 @@ export class CountryUI {
     const population = numberWithCommas(country.population);
 
     const childNode = `
-      <article id="${country.name}" class="flags-container__card">
+      <article class="flags-container__card">
+        <div id="${country.name}" class="flags-container__overlay"></div>
         <img
           width="264"
           height="160"
