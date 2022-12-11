@@ -162,6 +162,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 68px;
+  gap: 24px;
 }
 
 .country-details__info-list {
