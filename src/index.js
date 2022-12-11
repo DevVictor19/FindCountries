@@ -6,6 +6,8 @@ import { CountryUI } from "./js/classes/CountryUI";
 import { Api } from "./js/classes/Api";
 import { parseCountrySchema } from "./js/utils/parseCountrySchema";
 import { toggleSpinner } from "./js/spinner";
+import { toggleCountryDetails } from "./js/countryDetails";
+import { makeFriendlyUrl } from "./js/utils/makeFriendlyUrl";
 
 // elements
 const dropdownButton = document.getElementById("dropdownButton");
@@ -13,6 +15,7 @@ const dropdownOptions = document.getElementById("dropdownOptions");
 const darkModeBtn = document.getElementById("darkModeBtn");
 const searchInput = document.getElementById("searchInput");
 const searchForm = document.getElementById("searchForm");
+const flagsContainer = document.getElementById("flagsContainer");
 
 // classes
 const countryUI = new CountryUI(document.getElementById("flagsContainer"));
@@ -76,6 +79,22 @@ searchForm.addEventListener("submit", (event) => {
       countryUI.resetDisplay();
       populateDisplay(data);
     })
+    .then(() => toggleSpinner());
+});
+
+flagsContainer.addEventListener("click", (event) => {
+  if (event.target === flagsContainer) return;
+
+  const flagName = event.target.id;
+
+  toggleSpinner();
+  api
+    .get("name/" + makeFriendlyUrl(flagName) + "?fullText=true")
+    .then((data) => {
+      console.log(parseCountrySchema(data[0]));
+      return parseCountrySchema(data[0]);
+    })
+    .then((country) => toggleCountryDetails(country))
     .then(() => toggleSpinner());
 });
 
