@@ -1,12 +1,12 @@
 import "./styles.css";
 
-import { toggleDropdownAnimation } from "./js/dropdown";
-import { setIcons, setTheme, swapTheme } from "./js/darkMode";
 import { CountryUI } from "./js/classes/CountryUI";
 import { Api } from "./js/classes/Api";
-import { parseCountrySchema } from "./js/utils/parseCountrySchema";
+import { toggleDropdownAnimation } from "./js/dropdown";
+import { setIcons, setTheme, swapTheme } from "./js/darkMode";
 import { toggleSpinner } from "./js/spinner";
 import { toggleCountryDetails } from "./js/countryDetails";
+import { parseCountrySchema } from "./js/utils/parseCountrySchema";
 import { makeFriendlyUrl } from "./js/utils/makeFriendlyUrl";
 
 // elements
@@ -15,10 +15,10 @@ const dropdownOptions = document.getElementById("dropdownOptions");
 const darkModeBtn = document.getElementById("darkModeBtn");
 const searchInput = document.getElementById("searchInput");
 const searchForm = document.getElementById("searchForm");
-const flagsContainer = document.getElementById("flagsContainer");
+const countriesContainer = document.getElementById("countriesContainer");
 
 // classes
-const countryUI = new CountryUI(document.getElementById("flagsContainer"));
+const countryUI = new CountryUI(document.getElementById("countriesContainer"));
 const api = new Api("https://restcountries.com/v3.1/");
 
 // functions
@@ -82,19 +82,16 @@ searchForm.addEventListener("submit", (event) => {
     .then(() => toggleSpinner());
 });
 
-flagsContainer.addEventListener("click", (event) => {
-  if (event.target === flagsContainer) return;
+countriesContainer.addEventListener("click", (event) => {
+  if (event.target === countriesContainer) return;
 
   const flagName = event.target.id;
 
   toggleSpinner();
   api
     .get("name/" + makeFriendlyUrl(flagName) + "?fullText=true")
-    .then((data) => {
-      console.log(parseCountrySchema(data[0]));
-      return parseCountrySchema(data[0]);
-    })
-    .then((country) => toggleCountryDetails(country))
+    .then((data) => parseCountrySchema(data[0]))
+    .then(toggleCountryDetails)
     .then(() => toggleSpinner());
 });
 
