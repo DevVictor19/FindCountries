@@ -15,10 +15,10 @@ const dropdownOptions = document.getElementById("dropdownOptions");
 const darkModeBtn = document.getElementById("darkModeBtn");
 const searchInput = document.getElementById("searchInput");
 const searchForm = document.getElementById("searchForm");
-const flagsContainer = document.getElementById("flagsContainer");
+const countriesContainer = document.getElementById("countriesContainer");
 
 // classes
-const countryUI = new CountryUI(document.getElementById("flagsContainer"));
+const countryUI = new CountryUI(document.getElementById("countriesContainer"));
 const api = new Api("https://restcountries.com/v3.1/");
 
 // functions
@@ -82,8 +82,8 @@ searchForm.addEventListener("submit", (event) => {
     .then(() => toggleSpinner());
 });
 
-flagsContainer.addEventListener("click", (event) => {
-  if (event.target === flagsContainer) return;
+countriesContainer.addEventListener("click", (event) => {
+  if (event.target === countriesContainer) return;
 
   const flagName = event.target.id;
 

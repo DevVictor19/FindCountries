@@ -355,7 +355,7 @@ body {
   color: var(--options-item-active-color);
 }
 
-.flags-container {
+.countries-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, 264px);
   grid-template-rows: auto;
@@ -364,7 +364,7 @@ body {
   padding: 0 80px 45px;
 }
 
-.flags-container__card {
+.countries-container__card {
   position: relative;
   max-width: 264px;
   width: 100%;
@@ -375,12 +375,12 @@ body {
   min-height: 336px;
 }
 
-.flags-container__card img {
+.countries-container__card img {
   width: 100%;
   object-fit: cover;
 }
 
-.flags-container__overlay {
+.countries-container__overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -389,11 +389,11 @@ body {
   cursor: pointer;
 }
 
-.flags-container__card-info {
+.countries-container__card-info {
   padding: 24px;
 }
 
-.flags-container__card-title {
+.countries-container__card-title {
   font-style: normal;
   font-weight: 800;
   font-size: 1.125rem;
@@ -402,7 +402,7 @@ body {
   margin-bottom: 16px;
 }
 
-.flags-container__card-list {
+.countries-container__card-list {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -415,7 +415,7 @@ body {
   color: var(--tx-color);
 }
 
-.flags-container__card-list span {
+.countries-container__card-list span {
   font-weight: 600;
 }
 
@@ -440,7 +440,7 @@ body {
     margin-right: 80px;
   }
 
-  .flags-container {
+  .countries-container {
     padding: 0 48px 45px;
   }
 }
@@ -520,7 +520,7 @@ body {
     line-height: 16px;
   }
 
-  .flags-container {
+  .countries-container {
     padding: 0 16px 45px;
   }
 
