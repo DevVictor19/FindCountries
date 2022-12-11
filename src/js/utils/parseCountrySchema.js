@@ -10,6 +10,6 @@ export function parseCountrySchema(data) {
     languages: data.languages,
     tld: data.tld,
     borders: data.borders,
-    flagUrl: data.flags.png,
+    flagUrl: data.flags.svg,
   };
 }
