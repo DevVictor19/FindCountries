@@ -419,6 +419,14 @@ body {
   font-weight: 600;
 }
 
+@media screen and (max-width: 1300px) {
+  .country-details__article {
+    flex-direction: column;
+    align-items: center;
+    gap: 44px;
+  }
+}
+
 @media screen and (max-width: 960px) {
   .main-header {
     padding: 0 48px;
@@ -443,10 +451,40 @@ body {
   }
 }
 
+@media screen and (max-width: 725px) {
+  .country-details {
+    padding: 40px 28px 60px;
+  }
+}
+
 @media screen and (max-width: 640px) {
   .actions__form {
     margin-right: 0;
     max-width: none;
+  }
+
+  .country-details__img img {
+    width: 320px;
+    height: 229px;
+  }
+
+  .country-details__info {
+    max-width: 320px;
+  }
+
+  .country-details__info-title {
+    margin-bottom: 16px;
+  }
+
+  .country-details__info-lists {
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 34px;
+  }
+
+  .country-details__border-countries {
+    flex-direction: column;
+    gap: 22px;
   }
 }
 
@@ -478,11 +516,33 @@ body {
   }
 
   .actions__dropdown-options-item {
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 16px;
   }
 
   .flags-container {
     padding: 0 16px 45px;
+  }
+
+  .country-details__button {
+    font-size: 14px;
+    line-height: 20px;
+    width: 120px;
+    height: 32px;
+  }
+
+  .country-details__info-title {
+    font-size: 1.375rem;
+    line-height: 30px;
+  }
+
+  .country-details__info-item {
+    font-size: 0.875rem;
+    line-height: 32px;
+  }
+
+  .country-details__border-countries-item {
+    font-size: 0.75rem;
+    line-height: 16px;
   }
 }
