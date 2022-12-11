@@ -1,12 +1,12 @@
 import "./styles.css";
 
-import { toggleDropdownAnimation } from "./js/dropdown";
-import { setIcons, setTheme, swapTheme } from "./js/darkMode";
 import { CountryUI } from "./js/classes/CountryUI";
 import { Api } from "./js/classes/Api";
-import { parseCountrySchema } from "./js/utils/parseCountrySchema";
+import { toggleDropdownAnimation } from "./js/dropdown";
+import { setIcons, setTheme, swapTheme } from "./js/darkMode";
 import { toggleSpinner } from "./js/spinner";
 import { toggleCountryDetails } from "./js/countryDetails";
+import { parseCountrySchema } from "./js/utils/parseCountrySchema";
 import { makeFriendlyUrl } from "./js/utils/makeFriendlyUrl";
 
 // elements
@@ -90,11 +90,8 @@ flagsContainer.addEventListener("click", (event) => {
   toggleSpinner();
   api
     .get("name/" + makeFriendlyUrl(flagName) + "?fullText=true")
-    .then((data) => {
-      console.log(parseCountrySchema(data[0]));
-      return parseCountrySchema(data[0]);
-    })
-    .then((country) => toggleCountryDetails(country))
+    .then((data) => parseCountrySchema(data[0]))
+    .then(toggleCountryDetails)
     .then(() => toggleSpinner());
 });
 
