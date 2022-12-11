@@ -98,7 +98,7 @@ body {
 
 #content {
   position: relative;
-  min-height: 100vh;
+  overflow: hidden;
 }
 
 .country-details {
@@ -107,7 +107,7 @@ body {
   left: 0;
   width: 100%;
   background-color: var(--bg-color);
-  z-index: 8;
+  z-index: 10;
   padding: 80px;
 }
 
@@ -272,6 +272,7 @@ body {
   color: var(--tx-color);
   max-width: 200px;
   width: 100%;
+  z-index: 9;
 }
 
 .actions__dropdown-button {
