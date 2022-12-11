@@ -5,7 +5,7 @@ function createCountryDetailsEl(country) {
   let currencies = "";
   let languages = "";
 
-  country.borders.forEach((borderCountry) => {
+  country.borders?.forEach((borderCountry) => {
     borders += `<li class="country-details__border-countries-item">${borderCountry}</li>`;
   });
 
@@ -22,7 +22,7 @@ function createCountryDetailsEl(country) {
 
   return `
    <div id="countryDetails" class="country-details">
-    <button type="button" class="country-details__button">
+    <button id="backButton" type="button" class="country-details__button">
       <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M6.46447 0.107445L7.64298 1.28596L3.75389 5.17504L18.6031 5.17504L18.6031 6.82496L3.75389 6.82496L7.64298 10.714L6.46447 11.8926L0.57191 6L6.46447 0.107445Z" fill="#111517"/>
       </svg>
@@ -30,7 +30,7 @@ function createCountryDetailsEl(country) {
     </button>
     <article class="country-details__article">
       <div class="country-details__img"> 
-        <img width="560" height="483" src="${country.flagUrl}" alt="${
+        <img width="560" height="400" src="${country.flagUrl}" alt="${
     country.name
   }" />
       </div>
@@ -72,14 +72,20 @@ function createCountryDetailsEl(country) {
             </li>
           </ul>
         </div>
-        <div class="country-details__border-countries">
-          <h2 class="country-details__border-countries-title">
-            Border Countries:
-          </h2>
-          <ul class="country-details__border-countries-list">
-            ${borders}
-          </ul>
-        </div>
+        ${
+          country.borders
+            ? `
+              <div class="country-details__border-countries">
+                <h2 class="country-details__border-countries-title">
+                  Border Countries:
+                </h2>
+                <ul class="country-details__border-countries-list">
+                  ${borders}
+                </ul>
+              </div>
+              `
+            : ""
+        }
        </div>
       </article>
     </div>
@@ -92,8 +98,19 @@ export function toggleCountryDetails(country) {
   if (countryDetailsIsOpen) {
     const countryDetailsEl = document.getElementById("countryDetails");
     contentEl.removeChild(countryDetailsEl);
+    contentEl.style.height = "auto";
+    countryDetailsIsOpen = false;
     return;
   }
 
+  countryDetailsIsOpen = true;
   contentEl.insertAdjacentHTML("afterbegin", createCountryDetailsEl(country));
+
+  contentEl.style.height = `${
+    document.getElementById("countryDetails").offsetHeight
+  }px`;
+
+  document
+    .getElementById("backButton")
+    .addEventListener("click", toggleCountryDetails);
 }
