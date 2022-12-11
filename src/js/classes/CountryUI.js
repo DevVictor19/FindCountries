@@ -1,3 +1,5 @@
+import { numberWithCommas } from "../utils/numberWithCommas";
+
 export class CountryUI {
   #displayTarget;
 
@@ -6,8 +8,11 @@ export class CountryUI {
   }
 
   appendOnDisplay(country) {
+    const population = numberWithCommas(country.population);
+
     const childNode = `
-      <article id="${country.name}" class="flags-container__card">
+      <article class="flags-container__card">
+        <div id="${country.name}" class="flags-container__overlay"></div>
         <img
           width="264"
           height="160"
@@ -18,7 +23,7 @@ export class CountryUI {
         <div class="flags-container__card-info">
           <h1 class="flags-container__card-title">${country.name}</h1>
           <ul class="flags-container__card-list">
-            <li><span>Population:</span> ${country.population}</li>
+            <li><span>Population:</span> ${population}</li>
             <li><span>Region:</span> ${country.region}</li>
             <li><span>Capital:</span> ${country.capital}</li>
           </ul>
