@@ -18,7 +18,7 @@ const searchForm = document.getElementById("searchForm");
 const countriesContainer = document.getElementById("countriesContainer");
 
 // classes
-const countryUI = new CountryUI(document.getElementById("countriesContainer"));
+const countryUI = new CountryUI(countriesContainer);
 const api = new Api("https://restcountries.com/v3.1/");
 
 // functions
